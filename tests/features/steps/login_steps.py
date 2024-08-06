@@ -1,6 +1,6 @@
 from behave import given, when, then
 from selenium import webdriver
-from pages.login_page import LoginPage
+from main.ui.pages.login_page import LoginPage
 import allure
 
 @given('a web browser is at the todoist login page')
