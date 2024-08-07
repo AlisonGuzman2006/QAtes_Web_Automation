@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"failed","Fri Aug 02 20:02:35 BOT 2024","Fri Aug 02 20:03:03 BOT 2024","28697","","","","","","Unsuccessful login with invalid credentials",""
-"broken","Fri Aug 02 20:04:06 BOT 2024","Fri Aug 02 20:04:33 BOT 2024","27050","","","","","","Login with empty password",""
-"passed","Fri Aug 02 20:02:16 BOT 2024","Fri Aug 02 20:02:35 BOT 2024","18903","","","","","","Successful login with valid credentials",""
-"failed","Fri Aug 02 20:03:03 BOT 2024","Fri Aug 02 20:04:06 BOT 2024","62913","","","","","","Login with empty username",""
