@@ -7,7 +7,7 @@ password = "papasfritas"
 
 
 def before_all(context):
-    context.driver = create_driver()
+    context.driver = create_driver(context)
     context.url = url
 
 

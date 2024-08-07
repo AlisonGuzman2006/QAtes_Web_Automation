@@ -1,11 +1,9 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from core.ui.select_browser import select_browser
 
 
-def create_driver():
-    service = Service(executable_path='chromedriver.exe')
-    driver = webdriver.Chrome(service=service)
-    return driver
+def create_driver(context):
+    browser = context.config.userdata.get("browser", "chrome")
+    return select_browser(browser)
 
 
 def quit_driver(driver):
