@@ -1,48 +1,34 @@
+import time
+
 from behave import given, when, then
-from selenium import webdriver
+
+from main.ui.login_pages import search_and_fill_by_id, click_button_by_css
 
 
 @given('the user is on the Todoist login page')
 def step_given_user_on_todoist_login_page(context):
-    context.browser = webdriver.Chrome()  # Ensure you have the correct WebDriver for your browser
-    context.browser.get("https://todoist.com/users/showlogin")
+    context.driver.get(context.url)
+    time.sleep(10)
 
 
 @when('the user enters a valid email "{email}"')
 def step_when_user_enters_valid_email(context, email):
-    #email_field = context.browser.find_element_by_id("email")  # Ensure the correct selector is used
-    #email_field.send_keys(email)
-    print("Hola")
+    search_and_fill_by_id(context, "element-0", email)
 
 
 @when('the user enters a valid password "{password}"')
 def step_when_user_enters_valid_password(context, password):
-    #password_field = context.browser.find_element_by_id("password")  # Ensure the correct selector is used
-    #password_field.send_keys(password)
-    print("Hola")
+    search_and_fill_by_id(context, "element-3", password)
 
 
 @when('the user clicks on the "Log in" button')
 def step_when_user_clicks_login_button(context):
-    #login_button = context.browser.find_element_by_css_selector(".submit_btn")  # Ensure the correct selector is used
-    #login_button.click()
-    print("Hola")
+    click_button_by_css(context, 'button[data-gtm-id="start-email-login"][type="submit"]')
 
 
 @then('the user should be redirected to the Todoist dashboard')
 def step_then_user_redirected_to_dashboard(context):
-    # Ensure the correct URL or page element to verify successful login
-    #assert "app.todoist.com" in context.browser.current_url
-    print("Hola")
+    time.sleep(2)
+    assert f"{context.url}/app" in context.driver.current_url
 
 
-@then('the user should see a welcome message "Welcome back!"')
-def step_then_user_sees_welcome_message(context):
-    #welcome_message = context.browser.find_element_by_css_selector(".welcome_message")  # Ensure the correct selector is used
-    #assert welcome_message.text == "Welcome back!"
-    print("Hola")
-
-
-# Clean up after the scenario
-def after_scenario(context, scenario):
-    context.browser.quit()
