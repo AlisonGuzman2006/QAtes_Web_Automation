@@ -18,7 +18,10 @@ cd QAtes_Web_Automation
 
 ```bash
 python -m venv venv
-source venv/bin/activate 
+source venv/bin/activate
+si no funciona usar estos comandos 
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\venv\Scripts\activate
 pip install -r requirements.txt
  ```
 3. Para ejecutar los test usar el siguiente comando (Si desa usar otro navegador cambiar la opcion browser):
