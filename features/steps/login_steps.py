@@ -11,15 +11,14 @@ def step_given_user_on_todoist_login_page(context):
     context.driver.get(context.url)
     time.sleep(10)
 
-
 @when('the user enters a valid email "{email}"')
 def step_when_user_enters_valid_email(context, email):
-    context.component_pages.search_and_fill_by_id(context.login_page.EMAIL_SELECTOR, email)
+    context.component_pages.search_and_fill_by_id(context.login_page.EMAIL_FIELD_SELECTOR, email)
 
 
 @when('the user enters a valid password "{password}"')
 def step_when_user_enters_valid_password(context, password):
-    context.component_pages.search_and_fill_by_id(context.login_page.PASSWORD_SELECTOR, password)
+    context.component_pages.search_and_fill_by_id(context.login_page.PASSWORD_FIELD_SELECTOR, password)
 
 
 @when('the user clicks on the "Log in" button')
@@ -31,3 +30,20 @@ def step_when_user_clicks_login_button(context):
 def step_then_user_redirected_to_dashboard(context):
     time.sleep(10)
     assert f"{context.url}/app" in context.driver.current_url
+
+#Scenario: Unsuccessful login with invalid credentials
+
+@when('the user enters an invalid email "{invalid_email}"')
+def step_when_user_enters_invalid_email(context, invalid_email):
+    context.component_pages.search_and_fill_by_id(context.login_page.EMAIL_FIELD_SELECTOR, invalid_email)
+
+
+@when('the user enters an invalid password "{invalid_password}"')
+def step_when_user_enters_invalid_password(context, invalid_password):
+    context.component_pages.search_and_fill_by_id(context.login_page.PASSWORD_FIELD_SELECTOR, invalid_password)
+
+
+@then('the Todoist error message "{expected_message}" is displayed')
+def step_the_todoist_error_message_is_displayed(context, expected_message):
+    actual_message = context.component_pages.get_text_by_class(context.login_page.MESSAGE_ERROR_TEXT_SELECTOR)
+    assert actual_message == expected_message, f"Expected '{expected_message}', but got '{actual_message}'"
