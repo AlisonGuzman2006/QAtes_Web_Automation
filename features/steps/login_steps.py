@@ -24,8 +24,7 @@ def step_when_user_clicks_login_button(context):
 
 @then('the user should be redirected to the Todoist dashboard')
 def step_then_user_redirected_to_dashboard(context):
-    # No se necesita time.sleep(10) ya que la espera está manejada por WebDriverWait en click_button_by_css
-    assert f"{context.url}/app" in context.driver.current_url
+    assert context.component_pages.wait_for_url_contains("/app")
 
 # Scenario: Unsuccessful login with invalid credentials
 

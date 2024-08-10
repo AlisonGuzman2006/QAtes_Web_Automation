@@ -25,3 +25,9 @@ class ComponentPages:
             EC.visibility_of_element_located((By.CSS_SELECTOR, class_selector))
         )
         return message_error.text
+
+    def wait_for_url_contains(self, substring, timeout=10):
+        WebDriverWait(self.driver, timeout).until(EC.url_contains(substring))
+        return substring in self.driver.current_url
+
+
