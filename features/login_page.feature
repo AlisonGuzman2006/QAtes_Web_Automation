@@ -1,3 +1,5 @@
+@ui @login @smoke 
+
 Feature: Todoist Login
 
   Scenario: Successful login with valid credentials

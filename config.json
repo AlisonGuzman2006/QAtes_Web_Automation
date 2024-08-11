@@ -1,0 +1,24 @@
+{
+  "browsers": {
+    "chrome": {
+      "name": "chrome",
+      "headless": false,
+      "timeout": 1000,
+      "maxWindows": false,
+      "resolution": {
+        "width": 1500,
+        "height": 1024
+      }
+    },
+    "firefox": {
+      "name": "firefox",
+      "headless": false,
+      "timeout": 1000,
+      "maxWindows": false,
+      "resolution": {
+        "width": 1500,
+        "height": 1024
+      }
+    }
+  }
+}
