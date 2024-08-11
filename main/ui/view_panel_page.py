@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
-
+import time
 class ViewPanelPage:
     PRIORITY_DROPDOWN_FILTER_SELECTOR = 'span[aria-labelledby="view_menu__priority"]'
     SELECTED_PRIORITY_ITEM_FILTER_SELECTOR = 'li[data-value="p1"]'
