@@ -9,7 +9,7 @@ def step_given_user_on_todoist_login_page(context):
     context.component_pages = ComponentPages(context.driver)
     context.login_page = LoginPage(context.driver)
     context.driver.get(context.url)
-    time.sleep(10)
+    time.sleep(5)
 
 
 @when('the user enters a valid email "{email}"')
@@ -29,5 +29,5 @@ def step_when_user_clicks_login_button(context):
 
 @then('the user should be redirected to the Todoist dashboard')
 def step_then_user_redirected_to_dashboard(context):
-    time.sleep(10)
+    time.sleep(5)
     assert f"{context.url}/app" in context.driver.current_url
