@@ -2,7 +2,7 @@ import time
 
 from behave import given, when, then
 from main.ui.component_pages import ComponentPages
-from main.ui.label import Label
+from main.ui.label_page import Label
 
 
 @given('I want to go to the filters and labels page')

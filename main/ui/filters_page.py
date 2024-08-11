@@ -1,5 +1,4 @@
 class Label:
-    FILTERS_AND_LABEL_SELECTOR = 'a[aria-label="Filters & Labels"]'
     NEW_FILTER_BUTTON_SELECTOR = 'button[aria-label="Add new filter"]'
     TRY_IT_BUTTON_SELECTOR = "filter-assist-banner"
     FILTER_ASSIST_BUTTON_SELECTOR = "button[aria-label='All tasks due next week']"

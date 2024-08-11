@@ -1,8 +1,10 @@
 from selenium import webdriver
 
+from core.drivers.options import set_options
+
 
 def get_firefox_driver():
     options = webdriver.FirefoxOptions()
-    options.add_argument('--start-maximized')
+    set_options(options)
     driver = webdriver.Firefox(options=options)
     return driver

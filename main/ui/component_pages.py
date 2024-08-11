@@ -37,3 +37,8 @@ class ComponentPages:
             EC.visibility_of_all_elements_located((By.CLASS_NAME, class_selector))
         )
         return fields
+
+    def wait_url(self, expected_url):
+        WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+            EC.url_to_be(expected_url)
+        )

@@ -9,11 +9,9 @@ def step_logged_in_todoist(context,email, password):
     context.component_pages = ComponentPages(context.driver)
     context.login_page = LoginPage(context.driver)
     context.driver.get(context.url)
-    time.sleep(10)
     context.component_pages.search_and_fill_by_id(context.login_page.EMAIL_SELECTOR, email)
     context.component_pages.search_and_fill_by_id(context.login_page.PASSWORD_SELECTOR, password)
     context.component_pages.click_button_by_css(context.login_page.LOGIN_BUTTON_SELECTOR)
-    time.sleep(10)
 
 
 @given('the user is on the Todoist login page')
@@ -21,7 +19,6 @@ def step_given_user_on_todoist_login_page(context):
     context.component_pages = ComponentPages(context.driver)
     context.login_page = LoginPage(context.driver)
     context.driver.get(context.url)
-    time.sleep(10)
 
 
 @when('the user enters a valid email "{email}"')
@@ -41,5 +38,6 @@ def step_when_user_clicks_login_button(context):
 
 @then('the user should be redirected to the Todoist dashboard')
 def step_then_user_redirected_to_dashboard(context):
-    time.sleep(10)
-    assert f"{context.url}/app" in context.driver.current_url
+    time.sleep(5)
+    expected_url = f"{context.url}/app"
+    assert expected_url in context.driver.current_url
