@@ -4,6 +4,18 @@ from main.ui.component_pages import ComponentPages
 from main.ui.login_page import LoginPage
 
 
+@given('I am logged into Todoist with credentials "{email}" "{password}"')
+def step_logged_in_todoist(context,email, password):
+    context.component_pages = ComponentPages(context.driver)
+    context.login_page = LoginPage(context.driver)
+    context.driver.get(context.url)
+    time.sleep(10)
+    context.component_pages.search_and_fill_by_id(context.login_page.EMAIL_SELECTOR, email)
+    context.component_pages.search_and_fill_by_id(context.login_page.PASSWORD_SELECTOR, password)
+    context.component_pages.click_button_by_css(context.login_page.LOGIN_BUTTON_SELECTOR)
+    time.sleep(10)
+
+
 @given('the user is on the Todoist login page')
 def step_given_user_on_todoist_login_page(context):
     context.component_pages = ComponentPages(context.driver)
