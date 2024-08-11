@@ -15,6 +15,8 @@ class TodoistTodayPage:
     MORE_ACTIONS_DELETE_OPTION_SELECTOR = 'div[data-action-hint="task-overflow-menu-delete"]'
     DIALOG_DELETE_BTN_SELECTOR = 'div[data-testid="modal-overlay"] div[role="dialog"] button[data-autofocus="true"]'
 
+    MENU_ITEM_INBOX_DASHBOARD_SELECTOR = '#todoist_app ul[aria-label="Main filters"]>div[role="button"]'
+
 
     def __init__(self, driver):
         self.driver = driver

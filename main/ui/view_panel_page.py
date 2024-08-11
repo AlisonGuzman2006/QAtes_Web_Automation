@@ -7,6 +7,9 @@ class ViewPanelPage:
     VIEW_POPPER_OVERLAY_SELECTOR = 'body > div:nth-child(31)'
     RESET_FILTER_VIEW_PANEL_SELECTOR = 'div[data-testid="popper__overlay"] div[class=" popper"] li[class="menu_item icon_menu_item danger_menu"]'
 
+    DUE_DATE_FILTER_SELECTOR = 'div[data-testid="popper__overlay"] li[aria-labelledby="view_menu__due_date"]'
+    DUE_DATE_FILTER_ITEM_SELECTOR = 'div[data-testid="popper__overlay"] li[data-value="NEXT_7_DAYS"]'
+
     def __init__(self, driver):
         self.driver = driver
 
