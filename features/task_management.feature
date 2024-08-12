@@ -14,9 +14,9 @@ Feature: Task Management
     And the user deletes the task
     Then the task "Updated Task" should no longer appear in the task list
 
-  Scenario: Mark a task as completed and filter by completed tasks
-    Given Given the user is in the Today page dashboard for task management
+  Scenario: Mark a task as completed and verify in completed tasks list
+    Given the user is in the Today page dashboard for task management
     When the user creates a new task with title "Complete Task"
     And the user marks the task "Complete Task" as completed
-    And the user filters to see completed tasks
+    And the user navigates to the Inbox dashboard
     Then the user should see the task "Complete Task" in the completed tasks list

@@ -22,7 +22,7 @@ class TodoistTodayPage:
     TODAY_BOTTON_EDIT_SELECTOR = 'button:nth-child(1)'
     TODAY_EDIT_TEXT_SELECTOR = 'p'
     TODAY_SAVE_BTN_SELECTOR = 'button[data-testid="task-editor-submit-button"]'
-
+    TODAY_MARK_COMPLETE_SELECTOR = 'button[aria-label="Mark task as complete"]'
 
     def __init__(self, driver):
         self.driver = driver
@@ -51,7 +51,6 @@ class TodoistTodayPage:
         time.sleep(3)
 
     def edit_task(self):
-           #task_list = self.driver.find_element(By.CSS_SELECTOR, self.TODAY_TASKS_CONTAINER_SELECTOR)
             task_list_items = self.driver.find_elements(By.CSS_SELECTOR, self.TODAY_SECTION_TASK_LIST_SELECTOR)
 
             for task_item in task_list_items:
@@ -95,4 +94,18 @@ class TodoistTodayPage:
         time.sleep(3)
 
 
+    def mark_task_completed(self, task_title):
+        task_list_items = self.driver.find_elements(By.CSS_SELECTOR, self.TODAY_SECTION_TASK_LIST_SELECTOR)
+
+        for task_item in task_list_items:
+            task_content = task_item.find_element(By.CSS_SELECTOR, self.TODAY_TASK_CONTENT_SELECTOR)
+            if task_content.text == task_title:
+                mark_complete_button = task_item.find_element(By.CSS_SELECTOR, self.TODAY_MARK_COMPLETE_SELECTOR)
+                mark_complete_button.click()
+                break
+        time.sleep(3)
+
+    def navigate_to_inbox_dashboard(self):
+        self.driver.find_element(By.CSS_SELECTOR, self.MENU_ITEM_INBOX_DASHBOARD_SELECTOR).click()
+        time.sleep(3)
 

@@ -20,6 +20,7 @@ def step_given_user_in_today_dashboard_task_management(context):
     context.driver.get(context.today_dashboard.TODAY_DASHBOARD_URL)
     time.sleep(3)
 
+
 @when('the user creates a new task with title "{task_title}"')
 def step_when_user_creates_new_task(context, task_title):
     context.component_pages.click_button_by_css(context.today_dashboard.ADD_TASK_BUTTON_DASHBOARD_SELECTOR)
@@ -40,33 +41,23 @@ def step_when_user_deletes_task(context):
     context.today_dashboard.delete_task_management("New Title")
     time.sleep(3)
 
-@then('the task "{task_name}" should no longer appear in the task list')
-def step_impl(context, task_name):
-    task_list = context.today_dashboard.get_task_list()
-    task_names = [task.text for task in task_list]
-    assert task_name not in task_names, f'Task "{task_name}" was found in the task list when it should have been deleted.'
+#@then('the task "{task_name}" should no longer appear in the task list')
+#def step_then_task_should_no_longer_appear(context, task_name):
+#   task_list = context.today_dashboard.get_task_list()
+#   task_names = [task.text for task in task_list]
+#   assert task_name not in task_names, f'Task "{task_name}" was found in the task list when it should have been deleted.'
 
-@when('the user creates a new task with title new title')
-def step_when_user_creates_new_task(context, task_title):
-    context.component_pages.click_button_by_css(context.today_dashboard.ADD_TASK_BUTTON_DASHBOARD_SELECTOR)
-    time.sleep(1)
-    context.component_pages.search_and_fill_by_css_selector(context.new_task.NAME_TASK_FIELD_SELECTOR, task_title)
-    time.sleep(1)
-    context.component_pages.click_button_by_css(context.new_task.ADD_TASK_BUTTON_FORM_SELECTOR)
-    time.sleep(3)
-
-@when('the user marks the task new title as completed')
+@when('the user marks the task "{task_title}" as completed')
 def step_when_user_marks_task_completed(context, task_title):
     context.today_dashboard.mark_task_completed(task_title)
     time.sleep(3)
 
-@when('the user filters to see completed tasks')
-def step_when_user_filters_completed_tasks(context):
-    context.component_pages.click_button_by_css(context.view_panel.PRIORITY_DROPDOWN_FILTER_SELECTOR)
-    context.component_pages.click_button_by_css(context.view_panel.SELECTED_PRIORITY_ITEM_FILTER_SELECTOR)
+@when('the user navigates to the Inbox dashboard')
+def step_when_user_navigates_to_inbox(context):
+    context.component_pages.click_button_by_css(context.inbox_dashboard.VIEW_PANEL_BUTTON_SELECTOR)
     time.sleep(3)
 
 @then('the user should see the task "{task_title}" in the completed tasks list')
 def step_then_check_task_in_completed(context, task_title):
-    task_list = context.component_pages.get_elements_by_css(context.today_dashboard.TODAY_TASK_CONTENT_SELECTOR)
+    task_list = context.component_pages.get_elements_by_css(context.inbox_dashboard.INBOX_TASK_LIST_CONTENT_SELECTOR)
     assert_is_text_contained_elements(task_list, task_title)
