@@ -1,4 +1,4 @@
-@ui @login @smoke 
+@ui @login @smoke
 
 Feature: Todoist Login
 
