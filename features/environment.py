@@ -1,5 +1,3 @@
-from behave import use_fixture
-
 from hooks.hooks import create_driver, quit_driver, clean_browser
 
 url = "https://app.todoist.com"
