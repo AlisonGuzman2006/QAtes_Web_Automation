@@ -23,7 +23,7 @@ def step_given_user_in_today_dashboard_task_management(context):
 def step_when_user_creates_new_task(context, task_title):
     context.component_pages.click_button_by_css(context.today_dashboard.ADD_TASK_BUTTON_DASHBOARD_SELECTOR)
     time.sleep(1)
-    context.component_pages.search_and_fill_by_css_selector(context.new_task.NAME_TASK_FIELD_SELECTOR, task_title)
+    context.component_pages.search_and_fill_by_css(context.new_task.NAME_TASK_FIELD_SELECTOR, task_title)
     time.sleep(1)
     context.component_pages.click_button_by_css(context.new_task.ADD_TASK_BUTTON_FORM_SELECTOR)
     time.sleep(3)
