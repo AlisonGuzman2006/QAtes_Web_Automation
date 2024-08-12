@@ -9,3 +9,7 @@ def create_driver(context):
 def quit_driver(driver):
     if driver:
         driver.quit()
+
+
+def clean_browser(context):
+    context.driver.delete_all_cookies()

@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -28,10 +26,10 @@ class ComponentPages:
             EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector)))
         field.send_keys(value)
 
-    def get_element_by_css(self, css_selector, timeout=1):
-        #wait = WebDriverWait(self.driver, timeout)
-        #time.sleep(1)
-        element = self.driver.find_element(By.CSS_SELECTOR, css_selector)
+    def get_element_by_css(self, css_selector):
+        element = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector))
+        )
         return element
 
     def get_text_by_class(self, class_selector):
@@ -41,7 +39,9 @@ class ComponentPages:
         return field.text
 
     def get_elements_by_css(self, css_selector):
-        elements = self.driver.find_elements(By.CSS_SELECTOR, css_selector)
+        elements = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, css_selector))
+        )
         return elements
 
     def get_elements_by_class(self, class_selector):

@@ -4,14 +4,14 @@ import json
 from core.drivers.options import set_options
 
 
-"""
 def get_chrome_driver():
     options = webdriver.ChromeOptions()
     set_options(options)
     driver = webdriver.Chrome(options=options)
     return driver
-"""
 
+
+"""
 def get_chrome_driver():
     # Leer el archivo config.json
     with open('config.json', 'r') as f:
@@ -42,3 +42,4 @@ def get_chrome_driver():
     driver.implicitly_wait(chrome_config['timeout'])
 
     return driver
+"""
