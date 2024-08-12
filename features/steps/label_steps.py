@@ -2,6 +2,7 @@ import time
 
 from behave import given, when, then
 from main.ui.component_pages import ComponentPages
+from main.ui.filters_page import Filters
 from main.ui.label_page import Label
 
 
@@ -9,6 +10,7 @@ from main.ui.label_page import Label
 def want_to_go_to_filters_page(context):
     context.component_pages = ComponentPages(context.driver)
     context.label = Label(context.driver)
+    context.filters_page = Filters(context.driver)
 
 
 @given('I am on the Filters and labels page')

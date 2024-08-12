@@ -2,8 +2,8 @@ from behave import when, then
 from selenium.webdriver.common.by import By
 
 
-@when('I create a new filter "{filter_name}"')
-def step_impl(context, filter_name):
+@when('I create a new filter')
+def step_impl(context):
     context.component_pages.click_button_by_css(context.filters_page.NEW_FILTER_BUTTON_SELECTOR)
     context.component_pages.click_button_by_css(context.filters_page.TRY_IT_BUTTON_SELECTOR)
     context.component_pages.click_button_by_css(context.filters_page.FILTER_ASSIST_BUTTON_SELECTOR)
@@ -11,19 +11,15 @@ def step_impl(context, filter_name):
     context.component_pages.click_button_by_css(context.filters_page.ADD_FILTER_BUTTON_SELECTOR)
 
 
-
 @when('I added the filter to favorites')
 def step_impl(context):
-    # Agregar el filtro a favoritos
-    context.driver.implicitly_wait(5)
-    favorite_button = context.driver.find_element(By.XPATH, '//button[@aria-label="Add to favorites"]')
-    favorite_button.click()
+    #context.driver.implicitly_wait(5)
+    context.component_pages.click_button_by_css(context.filters_page.OPTIONS_MENU_SELECTOR)
+    context.component_pages.click_button_by_css(context.filters_page.ADD_FAVORITES_SELECTOR)
 
 
-@then('I should see the filter in favorites section')
-def step_impl(context):
-    # Verificar que el filtro aparezca en la sección de favoritos
-    favorites_section = context.driver.find_element(By.XPATH, '//span[text()="Favorites"]/..')
-    assert context.driver.find_element(By.XPATH, f'//span[text()="{context.new_filter}"]') in favorites_section.text, \
-        f'El filtro "{context.new_filter}" no fue encontrado en la sección de favoritos.'
-    context.driver.quit()
+@then('I should see the text "{remove_from_favorites}" inside the filter menu')
+def step_impl(context, remove_from_favorites):
+    context.component_pages.click_button_by_css(context.filters_page.OPTIONS_MENU_SELECTOR)
+    text = context.component_pages.get_text_by_css_selector(context.filters_page.REMOVE_FAVORITES_SELECTOR)
+    assert text == remove_from_favorites, "Wrong text"

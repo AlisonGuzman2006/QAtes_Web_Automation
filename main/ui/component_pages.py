@@ -17,9 +17,9 @@ class ComponentPages:
         field.send_keys(value)
 
     def click_button_by_css(self, css_selector):
-        login_button = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+        button = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, css_selector)))
-        login_button.click()
+        button.click()
 
     def search_and_fill_by_css(self, css_selector, value):
         field = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
@@ -42,3 +42,9 @@ class ComponentPages:
         WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
             EC.url_to_be(expected_url)
         )
+
+    def get_text_by_css_selector(self, css_selector):
+        field = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector))
+        )
+        return field.text

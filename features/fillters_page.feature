@@ -3,6 +3,6 @@ Feature: filters
   Given I am logged into Todoist with credentials "201604530@est.umss.edu" "papasfritas"
   And I want to go to the filters and labels page
   And I am on the Filters and labels page
-  When I create a new filter "urgente"
+  When I create a new filter
   And I added the filter to favorites
-  Then I should see the filter in favorites section
+  Then I should see the text "Remove from favorites" inside the filter menu
