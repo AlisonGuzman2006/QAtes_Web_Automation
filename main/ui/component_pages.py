@@ -27,6 +27,7 @@ class ComponentPages:
         field = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector)))
         field.send_keys(value)
+
     def get_element_by_css(self, css_selector, timeout=1):
         #wait = WebDriverWait(self.driver, timeout)
         #time.sleep(1)
@@ -38,6 +39,7 @@ class ComponentPages:
             EC.visibility_of_element_located((By.CLASS_NAME, class_selector))
         )
         return field.text
+
     def get_elements_by_css(self, css_selector):
         elements = self.driver.find_elements(By.CSS_SELECTOR, css_selector)
         return elements
@@ -53,3 +55,8 @@ class ComponentPages:
             EC.url_to_be(expected_url)
         )
 
+    def get_text_by_css_selector(self, css_selector):
+        field = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector))
+        )
+        return field.text
