@@ -6,7 +6,7 @@ class NewTaskPage:
     SELECTED_PRIORITY_ITEM_SELECTOR = 'li[data-action-hint="task-actions-priority-4"]'
 
     DUE_DATE_DROPDOWN_SELECTOR = 'div[aria-label="Set due date"]'
-    SELECTED_DUE_DATE_ITEM_SELECTOR = 'div[data-testid="popper__overlay"] button[data-track="scheduler|date_shortcut_thisweekend"]'
+    SELECTED_DUE_DATE_ITEM_SELECTOR = 'button[data-track="scheduler|date_shortcut_thisweekend"]'
 
     def __init__(self, driver):
         self.driver = driver
