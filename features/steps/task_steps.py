@@ -29,7 +29,7 @@ def step_open_the_the_new_task_form(context):
 
 @when('the user fills in the task name')
 def step_fill_in_task_name(context):
-    context.component_pages.search_and_fill_by_css_selector(context.new_task.NAME_TASK_FIELD_SELECTOR, "Antes de mimir")
+    context.component_pages.search_and_fill_by_css(context.new_task.NAME_TASK_FIELD_SELECTOR, "Antes de mimir")
     time.sleep(3)
 
 

@@ -25,4 +25,9 @@ pip install -r requirements.txt
 ```bash
 behave --define browser=chrome
  ``` 
-
+## Ejecución en paralelo
+ 1. Para ejecutar el proyecto en paralelo se debe correr el siguiente comando
+ ```bash
+python .\tests\parallel_runner.py
+```
+2. Para cambiar el número de navegadores, cambiar la variable `MAX_CONCURRENT_BROWSERS` que se encuentra en el archivo parallel_runner.py
