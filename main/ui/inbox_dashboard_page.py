@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 class InboxDashboardPage:
     TODAY_DASHBOARD_URL = "https://app.todoist.com/app/inbox"
-    VIEW_PANEL_BUTTON_SELECTOR = 'button[aria-label="View options menu"]'
+    VIEW_PANEL_BUTTON_SELECTOR = 'button[aria-describedby="view-options-menu-description"]'
 
     INBOX_TASK_LIST_CONTENT_SELECTOR = 'div[data-testid="virtuoso-item-list"] div[class="task_content"]'
     INBOX_TASK_LIST_CONTAINER = 'div[context="[object Object]"]'
