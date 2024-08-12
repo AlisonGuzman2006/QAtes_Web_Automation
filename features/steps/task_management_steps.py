@@ -1,9 +1,7 @@
 import time
 from behave import given, when, then
 
-from selenium.webdriver import Keys
 
-from main.ui.inbox_dashboard_page import InboxDashboardPage
 from main.ui.new_task_page import NewTaskPage
 from main.ui.todoist_today_page import TodoistTodayPage
 from main.ui.component_pages import ComponentPages
@@ -40,12 +38,6 @@ def step_when_user_edits_task(context):
 def step_when_user_deletes_task(context):
     context.today_dashboard.delete_task_management("New Title")
     time.sleep(3)
-
-#@then('the task "{task_name}" should no longer appear in the task list')
-#def step_then_task_should_no_longer_appear(context, task_name):
-#   task_list = context.today_dashboard.get_task_list()
-#   task_names = [task.text for task in task_list]
-#   assert task_name not in task_names, f'Task "{task_name}" was found in the task list when it should have been deleted.'
 
 @when('the user marks the task "{task_title}" as completed')
 def step_when_user_marks_task_completed(context, task_title):
