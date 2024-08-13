@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver import ActionChains
 
 
 class ComponentPages:
@@ -8,7 +9,9 @@ class ComponentPages:
 
     def __init__(self, driver):
         self.driver = driver
-
+        self.web_driver = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT)
+        self.action_chains = ActionChains(self.driver)
+        
     def search_and_fill_by_id(self, id, value):
         field = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
             EC.visibility_of_element_located((By.ID, id))
@@ -40,7 +43,7 @@ class ComponentPages:
 
     def get_elements_by_css(self, css_selector):
         elements = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
-            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, css_selector))
+            EC.element_located_to_be_selected((By.CSS_SELECTOR, css_selector))
         )
         return elements
 
