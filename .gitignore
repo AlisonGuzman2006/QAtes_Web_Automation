@@ -1,0 +1,31 @@
+# Entorno virtual
+.venv/
+venv/
+ENV/
+env/
+# Archivos de configuración específicos del entorno
+pyvenv.cfg
+
+# Archivos de caché
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos de registro
+*.log
+
+# Directorios de dependencias
+Lib/
+Scripts/
+
+# Archivos de configuración del entorno
+.vscode/
+.idea/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+/reports
+
+
