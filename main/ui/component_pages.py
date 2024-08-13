@@ -11,7 +11,7 @@ class ComponentPages:
         self.driver = driver
         self.web_driver = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT)
         self.action_chains = ActionChains(self.driver)
-        
+
     def search_and_fill_by_id(self, id, value):
         field = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
             EC.visibility_of_element_located((By.ID, id))
@@ -47,6 +47,11 @@ class ComponentPages:
         )
         return elements
 
+    def get_elements_visibility_by_css(self, css_selector):
+        elements = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+            EC.visibility_of_all_elements_located((By.CSS_SELECTOR, css_selector))
+        )
+        return elements
     def get_elements_by_class(self, class_selector):
         fields = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
             EC.visibility_of_all_elements_located((By.CLASS_NAME, class_selector))

@@ -30,14 +30,9 @@ def remove_favorite_text(context, remove_from_favorites):
     assert text == remove_from_favorites, "Wrong text"
 
 
-"""
-    This feature should remove aut.. the filter aggregation has a limit for free accounts (max 3)
-"""
-
-
 @when('I delete the filter "{filter_name}"')
 def step_impl(context, filter_name):
-    filters = context.component_pages.get_elements_by_css(context.filters_page.FILTER_OPTION_SELECTOR)
+    filters = context.component_pages.get_elements_visibility_by_css(context.filters_page.FILTER_OPTION_SELECTOR)
     target_filter = None
     for filter in filters:
         filter_text = filter.find_element(By.CLASS_NAME, context.filters_page.FILTER_TEXT_SELECTOR)

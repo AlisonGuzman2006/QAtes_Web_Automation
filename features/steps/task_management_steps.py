@@ -6,8 +6,6 @@ from main.ui.todoist_today_page import TodoistTodayPage
 from main.ui.component_pages import ComponentPages
 from main.ui.view_panel_page import ViewPanelPage
 
-from core.assertions.content_assertions import assert_is_text_contained_elements, assert_element_is_deleted
-
 
 @given('the user is in the Today page dashboard for task management')
 def step_given_user_in_today_dashboard_task_management(context):
@@ -38,6 +36,7 @@ def step_when_user_edits_task(context, new_task_title):
 @when('the user open the new task')
 def step_when_user_edits_task(context):
     context.component_pages.click_button_by_css(context.today_dashboard.OPEN_TASK_CREATED_SELECTOR)
+    time.sleep(2)
 
 
 @then('the user should see the new title task {new_task_title}')
