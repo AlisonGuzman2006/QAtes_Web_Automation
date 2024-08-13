@@ -8,8 +8,8 @@ class TodoistTodayPage:
     VIEW_PANEL_BUTTON_SELECTOR = 'button[aria-label="View options menu"]'
 
 
-    TODAY_TASKS_CONTAINER_SELECTOR = 'div[context="[object Object]"]'
-    TODAY_TASKS_LIST_SELECTOR = 'div[data-item-index]'
+    #TODAY_TASKS_CONTAINER_SELECTOR = 'div[context="[object Object]"]'
+    TODAY_TASKS_LIST_SELECTOR = 'div[context="[object Object]"] div[data-index]'
     TODAY_TASK_CONTENT_SELECTOR = 'div[class="task_content"]'
     TASK_MORE_ACTIONS_BUTTON_SELECTOR = 'button[data-testid="more_menu"]'
     MORE_ACTIONS_DELETE_OPTION_SELECTOR = 'div[data-action-hint="task-overflow-menu-delete"]'
@@ -23,11 +23,11 @@ class TodoistTodayPage:
 
 
     def delete_task(self, task_name):
-        task_list = self.driver.find_element(By.CSS_SELECTOR, self.TODAY_TASKS_CONTAINER_SELECTOR)
-        task_list_items = task_list.find_elements(By.CSS_SELECTOR, self.TODAY_TASKS_LIST_SELECTOR)
-        print(task_list_items, "Iam Here")
+        #task_list = self.driver.find_element(By.CSS_SELECTOR, self.TODAY_TASKS_CONTAINER_SELECTOR)
+        task_list_items = self.driver.find_elements(By.CSS_SELECTOR, self.TODAY_TASKS_LIST_SELECTOR)
+
         for task_item in task_list_items:
-            print(task_item, "Aqui estoy")
+
             task_content = task_item.find_element(By.CSS_SELECTOR, self.TODAY_TASK_CONTENT_SELECTOR)
             if task_content.text == task_name:
                 more_actions_btn = task_item.find_element(By.CSS_SELECTOR, self.TASK_MORE_ACTIONS_BUTTON_SELECTOR)
