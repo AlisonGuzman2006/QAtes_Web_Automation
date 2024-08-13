@@ -11,10 +11,11 @@ from core.assertions.content_assertions import assert_is_text_contained_elements
 
 @given('the user is in the Today page dashboard for task management')
 def step_given_user_in_today_dashboard_task_management(context):
-    context.today_dashboard = TodoistTodayPage(context.driver)
+    context.component_pages = ComponentPages(context.driver)
+    context.today_dashboard = TodoistTodayPage(context.component_pages)
     context.new_task = NewTaskPage(context.driver)
-    context.view_panel = ViewPanelPage(context.driver)
-    context.today_dashboard = TodoistTodayPage(context.driver)
+    context.view_panel = ViewPanelPage(context.component_pages)
+    context.today_dashboard = TodoistTodayPage(context.component_pages)
     time.sleep(3)
 
 

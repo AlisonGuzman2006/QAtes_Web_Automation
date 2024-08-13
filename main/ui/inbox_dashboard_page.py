@@ -29,7 +29,6 @@ class InboxDashboardPage:
         task_list_items = task_list.find_elements(By.CSS_SELECTOR, self.INBOX_TASK_LIST_SELECTOR)
         for task_item in task_list_items:
             task_content = task_item.find_element(By.CSS_SELECTOR, self.INBOX_TASK_CONTENT_SELECTOR)
-            print(task_content.text, 'text')
             if task_content.text == task_name:
                 self.driver.action_chains.move_to_element(task_item).perform()
                 more_actions_btn = task_item.find_element(By.CSS_SELECTOR, self.MORE_ACTIONS_BTN_SELECTOR)
