@@ -3,9 +3,11 @@ name: Run Selenium Tests
 on:
   push:
     branches:
+      - main
       - staging
   pull_request:
     branches:
+      - main
       - staging
 
 jobs:
@@ -31,8 +33,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
+      - name: Install ChromeDriver
+        run: |
+          python -m chromedriver_autoinstaller
+
       - name: Run Selenium tests with Behave
         env:
           PATH: /usr/local/bin:$PATH
         run: |
-          behave
+          python -m behave --tags=@your_tag --headless
