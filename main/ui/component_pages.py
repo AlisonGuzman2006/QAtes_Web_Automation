@@ -74,3 +74,12 @@ class ComponentPages:
             EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector)))
         field.clear()
         field.send_keys(value)
+
+    def click_button_by_xpath(self, xpath_selector):
+        button = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+            EC.element_to_be_clickable((By.XPATH, xpath_selector))
+        )
+        button.click()
+
+    def get_error_message(self):
+        return self.browser.find_element(*LoginLocators.ERROR_MESSAGE).text

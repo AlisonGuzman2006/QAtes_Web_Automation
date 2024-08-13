@@ -30,6 +30,15 @@ def step_when_user_enters_valid_email(context, email):
 def step_when_user_enters_valid_password(context, password):
     context.component_pages.search_and_fill_by_id(context.login_page.PASSWORD_SELECTOR, password)
 
+@when('the user enters an invalid email "{email}"')
+def step_when_user_enters_invalid_email(context, email):
+    context.component_pages.search_and_fill_by_id(context.login_page.EMAIL_SELECTOR, email)
+
+
+@when('the user enters an invalid password "{password}"')
+def step_when_user_enters_invalid_password(context, password):
+    context.component_pages.search_and_fill_by_id(context.login_page.PASSWORD_SELECTOR, password)
+
 
 @when('the user clicks on the "Log in" button')
 def step_when_user_clicks_login_button(context):
@@ -41,3 +50,11 @@ def step_then_user_redirected_to_dashboard(context):
     time.sleep(5)
     expected_url = f"{context.url}/app"
     assert expected_url in context.driver.current_url
+
+@then('the Todoist error message "{error_message}" is displayed')
+def step_impl(context, error_message):
+    error = context.component_pages.get_text_by_css_selector(context.login_page.ERROR_MESSAGE_SELECTOR)
+    assert error_message == error, "Wrong text"
+
+
+

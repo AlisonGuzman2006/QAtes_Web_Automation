@@ -19,6 +19,12 @@ class ViewPanelPage:
     DUE_DATE_FILTER_SELECTOR = 'div[data-testid="popper__overlay"] li[aria-labelledby="view_menu__due_date"]'
     DUE_DATE_FILTER_ITEM_SELECTOR = 'div[data-testid="popper__overlay"] li[data-value="NEXT_7_DAYS"]'
 
+    ASSIGNEE_DROPDOWN_FILTER_SELECTOR = 'span[aria-labelledby="view_menu__assigned"]'
+    SELECTED_ASSIGNEE_ITEM_FILTER_SELECTOR = 'li[data-value="assigned to:"]'
+    TEAM_MEMBER_ITEM_FILTER_SELECTOR = "//span[text()='Choose assignees']"
+    TEAM_MEMBER_SELECTED_ITEM_FILTER_SELECTOR = "//div[@class='person_picker__option_text' and text()='Freddy']"
+
+
     def __init__(self, driver: ComponentPages):
         self.driver = driver
 
