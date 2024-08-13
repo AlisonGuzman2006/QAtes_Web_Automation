@@ -1,6 +1,10 @@
 import time
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+from main.ui.component_pages import ComponentPages
 
 
 class InboxDashboardPage:
@@ -15,28 +19,24 @@ class InboxDashboardPage:
     MORE_ACTIONS_DELETE_OPTION_SELECTOR = 'div[data-action-hint="task-overflow-menu-delete"]'
     DIALOG_DELETE_BTN_SELECTOR = 'div[data-testid="modal-overlay"] div[role="dialog"] button[data-autofocus="true"]'
 
+    EXP_TIMEOUT = 15
 
-    def __init__(self, driver):
+    def __init__(self, driver: ComponentPages):
         self.driver = driver
 
     def delete_task(self, task_name):
-        task_list = self.driver.find_element(By.CSS_SELECTOR, self.INBOX_TASK_LIST_CONTAINER)
+        task_list = self.driver.web_driver.until(EC.presence_of_element_located((By.CSS_SELECTOR, self.INBOX_TASK_LIST_CONTAINER)))
         task_list_items = task_list.find_elements(By.CSS_SELECTOR, self.INBOX_TASK_LIST_SELECTOR)
-        print(task_list_items, "Iam Here")
         for task_item in task_list_items:
-            print(task_item, "Aqui estoy")
             task_content = task_item.find_element(By.CSS_SELECTOR, self.INBOX_TASK_CONTENT_SELECTOR)
             if task_content.text == task_name:
+                self.driver.action_chains.move_to_element(task_item).perform()
                 more_actions_btn = task_item.find_element(By.CSS_SELECTOR, self.MORE_ACTIONS_BTN_SELECTOR)
                 more_actions_btn.click()
-                time.sleep(5)
+                time.sleep(1)
 
-                delete_option = self.driver.find_element(By.CSS_SELECTOR, self.MORE_ACTIONS_DELETE_OPTION_SELECTOR)
-                delete_option.click()
-                time.sleep(5)
+                self.driver.click_button_by_css(self.MORE_ACTIONS_DELETE_OPTION_SELECTOR)
+                time.sleep(1)
 
-                delete_btn_dialog = self.driver.find_element(By.CSS_SELECTOR, self.DIALOG_DELETE_BTN_SELECTOR)
-                delete_btn_dialog.click()
-
+                self.driver.click_button_by_css(self.DIALOG_DELETE_BTN_SELECTOR)
                 break
-        time.sleep(3)

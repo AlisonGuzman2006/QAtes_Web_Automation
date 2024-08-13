@@ -7,6 +7,8 @@ class NewTaskPage:
 
     DUE_DATE_DROPDOWN_SELECTOR = 'div[aria-label="Set due date"]'
     SELECTED_DUE_DATE_ITEM_SELECTOR = 'div[data-testid="popper__overlay"] button[data-track="scheduler|date_shortcut_nextweekend"]'
+    
+    DATE_SELECTOR_TOMORROW_OPTION = 'button[data-action-hint="scheduler-suggestion-tomorrow"]'
 
     def __init__(self, driver):
         self.driver = driver
