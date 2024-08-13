@@ -2,10 +2,14 @@ import time
 
 from behave import when, then
 from selenium.webdriver.common.by import By
+from main.ui.component_pages import ComponentPages
+from main.ui.filters_page import Filters
 
 
 @when('I create a new filter')
 def creation_new_filter(context):
+    context.component_pages = ComponentPages(context.driver)
+    context.filters_page = Filters(context.driver)
     context.component_pages.click_button_by_css(context.filters_page.NEW_FILTER_BUTTON_SELECTOR)
     context.component_pages.click_button_by_css(context.filters_page.TRY_IT_BUTTON_SELECTOR)
     context.component_pages.click_button_by_css(context.filters_page.FILTER_ASSIST_BUTTON_SELECTOR)
@@ -24,6 +28,11 @@ def remove_favorite_text(context, remove_from_favorites):
     context.component_pages.click_button_by_css(context.filters_page.OPTIONS_MENU_SELECTOR)
     text = context.component_pages.get_text_by_css_selector(context.filters_page.REMOVE_FAVORITES_SELECTOR)
     assert text == remove_from_favorites, "Wrong text"
+
+
+"""
+    This feature should remove aut.. the filter aggregation has a limit for free accounts (max 3)
+"""
 
 
 @when('I delete the filter "{filter_name}"')
