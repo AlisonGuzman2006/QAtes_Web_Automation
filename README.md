@@ -34,3 +34,30 @@ behave --define browser=chrome
 python .\tests\parallel_runner.py
 ```
 2. Para cambiar el número de navegadores, cambiar la variable `MAX_CONCURRENT_BROWSERS` que se encuentra en el archivo parallel_runner.py
+## Reportes
+### Requisitos previos
+1. JAVA https://www.oracle.com/java/technologies/downloads/#jdk22-windows
+2. Allure https://github.com/allure-framework/allure2/releases/tag/2.30.0
+
+### Configuración
+1. Instalación dependencias 
+```bash
+pip install allure-behave
+pip install allure-python-commons
+ ``` 
+2. Ejecución de pruebas con behave para guardar en results
+```bash
+behave -f allure_behave.formatter:AllureFormatter -o reports/allure-results ./features
+
+ ``` 
+3. Generar el reporte
+```bash
+allure generate reports/allure-results -o reports/allure-report --clean
+
+ ``` 
+4. Visualizar el reporte
+```bash
+allure open reports/allure-report
+``` 
+
+
