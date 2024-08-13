@@ -1,15 +1,19 @@
 from selenium import webdriver
-import json
-
-from core.drivers.options import set_options
-
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+import os
 
 def get_chrome_driver():
-    options = webdriver.ChromeOptions()
-    set_options(options)
-    driver = webdriver.Chrome(options=options)
-    return driver
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
 
+    service = Service(executable_path="/usr/local/bin/chromedriver")
+
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
 
 """
 def get_chrome_driver():
