@@ -2,10 +2,14 @@ import time
 
 from behave import when, then
 from selenium.webdriver.common.by import By
+from main.ui.component_pages import ComponentPages
+from main.ui.filters_page import Filters
 
 
 @when('I create a new filter')
 def creation_new_filter(context):
+    context.component_pages = ComponentPages(context.driver)
+    context.filters_page = Filters(context.driver)
     context.component_pages.click_button_by_css(context.filters_page.NEW_FILTER_BUTTON_SELECTOR)
     context.component_pages.click_button_by_css(context.filters_page.TRY_IT_BUTTON_SELECTOR)
     context.component_pages.click_button_by_css(context.filters_page.FILTER_ASSIST_BUTTON_SELECTOR)
@@ -46,3 +50,4 @@ def step_impl(context, filter_name):
 def step_impl(context, empty_filters):
     text = context.component_pages.get_text_by_css_selector(context.filters_page.EMPTY_FILTERS_SELECTOR)
     assert text == empty_filters, "Wrong text"
+
