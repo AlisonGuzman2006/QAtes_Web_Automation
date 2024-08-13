@@ -58,7 +58,7 @@ def step_filter_task_by_priority(context):
     context.component_pages.click_button_by_css(context.view_panel.SELECTED_PRIORITY_ITEM_FILTER_SELECTOR)
     context.driver.switch_to.active_element.send_keys(Keys.ESCAPE)
     context.driver.switch_to.active_element.send_keys(Keys.ESCAPE)
-    time.sleep(3)
+    time.sleep(10)
 
 
 @then('the user should see the task created with the priority assigned in the filtered results')

@@ -6,3 +6,4 @@ Feature: filters
   When I create a new filter
   And I added the filter to favorites
   Then I should see the text "Remove from favorites" inside the filter menu
+

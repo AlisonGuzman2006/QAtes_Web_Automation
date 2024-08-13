@@ -60,3 +60,9 @@ class ComponentPages:
             EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector))
         )
         return field.text
+
+    def search_clean_and_fill_by_css(self, css_selector, value):
+        field = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, css_selector)))
+        field.clear()
+        field.send_keys(value)

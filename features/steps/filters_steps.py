@@ -1,5 +1,4 @@
 from behave import when, then
-from selenium.webdriver.common.by import By
 
 
 @when('I create a new filter')
