@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 import time
+
 class ViewPanelPage:
     PRIORITY_DROPDOWN_FILTER_SELECTOR = 'span[aria-labelledby="view_menu__priority"]'
     SELECTED_PRIORITY_ITEM_FILTER_SELECTOR = 'li[data-value="p1"]'
@@ -12,10 +16,10 @@ class ViewPanelPage:
 
     def __init__(self, driver):
         self.driver = driver
+        self.EXP_TIMEOUT = 15
 
     def reset_view_panel(self):
-        reset_btn = self.driver.find_element(By.CSS_SELECTOR, self.RESET_FILTER_VIEW_PANEL_SELECTOR)
+        reset_btn = WebDriverWait(self.driver, self.EXP_TIMEOUT)
+        reset_btn.until(lambda: EC.element_to_be_clickable(By.CSS_SELECTOR, self.RESET_FILTER_VIEW_PANEL_SELECTOR))
         reset_btn.click()
-        time.sleep(3)
-        self.driver.switch_to.active_element.send_keys(Keys.ESCAPE)
-        time.sleep(3)
+        WebDriverWait(self.driver, self.EXP_TIMEOUT).until(lambda: EC.frame_to_be_available_and_switch_to_it()).send_keys(Keys.ESCAPE)

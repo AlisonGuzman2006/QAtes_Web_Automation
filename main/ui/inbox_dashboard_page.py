@@ -22,9 +22,7 @@ class InboxDashboardPage:
     def delete_task(self, task_name):
         task_list = self.driver.find_element(By.CSS_SELECTOR, self.INBOX_TASK_LIST_CONTAINER)
         task_list_items = task_list.find_elements(By.CSS_SELECTOR, self.INBOX_TASK_LIST_SELECTOR)
-        print(task_list_items, "Iam Here")
         for task_item in task_list_items:
-            print(task_item, "Aqui estoy")
             task_content = task_item.find_element(By.CSS_SELECTOR, self.INBOX_TASK_CONTENT_SELECTOR)
             if task_content.text == task_name:
                 more_actions_btn = task_item.find_element(By.CSS_SELECTOR, self.MORE_ACTIONS_BTN_SELECTOR)

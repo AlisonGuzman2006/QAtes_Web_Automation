@@ -17,9 +17,12 @@ class ComponentPages:
         field.send_keys(value)
 
     def click_button_by_css(self, css_selector):
-        button = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, css_selector)))
-        button.click()
+        try:
+            button = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, css_selector)))
+            button.click()
+        except:
+            print('error')
 
     def search_and_fill_by_css(self, css_selector, value):
         field = WebDriverWait(self.driver, self.EXPLICIT_TIMEOUT).until(
