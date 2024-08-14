@@ -37,7 +37,6 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-          # Versión de ChromeDriver compatible con Google Chrome 127
           CHROME_DRIVER_VERSION="127.0.6533.119"
           wget https://storage.googleapis.com/chrome-for-testing-public/${CHROME_DRIVER_VERSION}/linux64/chromedriver-linux64.zip
           unzip chromedriver-linux64.zip -d chromedriver
