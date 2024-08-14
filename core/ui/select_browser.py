@@ -1,4 +1,3 @@
-from selenium import webdriver
 from core.drivers.chrome_driver import get_chrome_driver
 from core.drivers.firefox_driver import get_firefox_driver
 
