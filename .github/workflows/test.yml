@@ -37,9 +37,10 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-          CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_127)  # Obtiene la versión compatible para Chrome 127
-          wget https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
+          # Versión de ChromeDriver compatible con Google Chrome 127
+          CHROME_DRIVER_VERSION="127.0.6533.119"  # Actualiza con la versión correcta si es diferente
+          wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.119/linux64/chromedriver-linux64.zip	
+          unzip chromedriver-linux64.zip
           sudo mv chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
 
