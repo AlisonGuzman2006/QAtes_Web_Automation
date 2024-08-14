@@ -39,9 +39,9 @@ jobs:
         run: |
           # Versión de ChromeDriver compatible con Google Chrome 127
           CHROME_DRIVER_VERSION="127.0.6533.119"  # Actualiza con la versión correcta si es diferente
-          wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.119/linux64/chromedriver-linux64.zip	
-          unzip chromedriver-linux64.zip
-          sudo mv chromedriver /usr/local/bin/chromedriver
+          wget https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip -d chromedriver
+          sudo mv chromedriver/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Check Google Chrome and ChromeDriver versions
