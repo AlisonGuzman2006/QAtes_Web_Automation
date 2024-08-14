@@ -33,13 +33,13 @@ jobs:
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable=127.0.6533.119-1
+          sudo apt-get install -y google-chrome-stable=127.0.6533.119
 
       - name: Install ChromeDriver
         run: |
           # Versión de ChromeDriver compatible con Google Chrome 127
           CHROME_DRIVER_VERSION="127.0.6533.119"  # Actualiza con la versión correcta si es diferente
-          wget https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
+          wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.119/linux64/chromedriver-linux64.zip
           unzip chromedriver_linux64.zip -d chromedriver
           sudo mv chromedriver/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
